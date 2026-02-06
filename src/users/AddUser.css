@@ -1,0 +1,128 @@
+.modern-form-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 2.5rem !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.modern-form-container .form-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.modern-form-container .form-control,
+.modern-form-container .form-select {
+    background-color: #f8f9fa;
+    border: none;
+    border-left: none;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: none;
+}
+
+.modern-form-container .form-control:focus,
+.modern-form-container .form-select:focus {
+    background-color: #ffffff;
+    border-left: none;
+    outline: 0;
+    /* Box-shadow is moved to the input-group:focus-within */
+    box-shadow: none;
+}
+
+.modern-form-container .form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.modern-form-container .form-check-label {
+    color: #555;
+}
+
+.modern-form-container .btn-submit {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.modern-form-container .btn-submit:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.modern-form-container .btn-reset {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #212529;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.modern-form-container .btn-reset:hover {
+    background-color: #e2e6ea;
+}
+
+.modern-form-container .input-group-text {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Highlight the entire input group on focus */
+.modern-form-container .input-group:focus-within {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-radius: 8px;
+}
+
+/* Fix alignment for react-datepicker inside an input-group */
+.modern-form-container .input-group .react-datepicker-wrapper {
+    /* The wrapper should take up the remaining space */
+    flex: 1 1 auto;
+    width: 1%;
+}
+
+/* react-datepicker custom styles */
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker {
+    border-radius: 8px !important;
+    border: 1px solid #dee2e6 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: inherit !important;
+}
+
+.react-datepicker__header {
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+    background-color: #0d6efd !important;
+    border-radius: 50% !important;
+}
+
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow {
+    top: 7px !important;
+}
+
+.toggle-text a {
+    color: #0d6efd;
+    font-weight: 600;
+    text-decoration: none;
+}
