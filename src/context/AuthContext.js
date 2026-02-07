@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../apiConfig'; // Adjust the path if authContext is in a subfolder (e.g., '../apiConfig')
 
-axios.defaults.baseURL = "http://localhost:9009";
+axios.defaults.baseURL = API_BASE_URL;
 
 export const AuthContext = createContext();
 
