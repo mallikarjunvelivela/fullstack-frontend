@@ -1,63 +1,53 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { Carousel } from 'bootstrap';
+import { Carousel } from 'react-bootstrap';
 
 export default function Home() {
-  const { auth, website } = useContext(AuthContext);
-
-  useEffect(() => {
-    const carouselElement = document.getElementById('homeCarousel');
-    if (carouselElement) {
-      new Carousel(carouselElement, {
-        interval: 3000,
-        ride: 'carousel'
-      });
-    }
-  }, []);
+  const { auth } = useContext(AuthContext);
 
   return (
     <div className='container-fluid p-0'>
       {/* Carousel Section */}
-      <div id="homeCarousel" className="carousel slide" data-bs-ride="carousel">
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src="https://picsum.photos/id/10/1200/500" className="d-block w-100" alt="Welcome" style={{ height: '500px', objectFit: 'cover' }} />
-            <div className="carousel-caption bg-dark bg-opacity-50 rounded p-3">
-              <h1>Welcome to User Management System</h1>
-              <p>Efficiently manage your users and data with our fullstack solution.</p>
-              {!auth.user && <Link to="/signup" className="btn btn-primary mt-3">Sign Up Now</Link>}
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src="https://picsum.photos/id/11/1200/500" className="d-block w-100" alt="Secure" style={{ height: '500px', objectFit: 'cover' }} />
-            <div className="carousel-caption bg-dark bg-opacity-50 rounded p-3">
-              <h1>Secure & Reliable</h1>
-              <p>Built with security in mind to protect your sensitive information.</p>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src="https://picsum.photos/id/12/1200/500" className="d-block w-100" alt="Easy" style={{ height: '500px', objectFit: 'cover' }} />
-            <div className="carousel-caption bg-dark bg-opacity-50 rounded p-3">
-              <h1>Easy to Use</h1>
-              <p>User-friendly interface designed for the best experience.</p>
-            </div>
-          </div>
-        </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
+      <Carousel id="homeCarousel" interval={3000}>
+        <Carousel.Item>
+          <img
+            src="https://picsum.photos/id/10/1200/500"
+            className="d-block w-100"
+            alt="Welcome"
+            style={{ height: '500px', objectFit: 'cover' }}
+          />
+          <Carousel.Caption className="bg-dark bg-opacity-50 rounded p-3">
+            <h1>Welcome to User Management System</h1>
+            <p>Efficiently manage your users and data with our fullstack solution.</p>
+            {!auth.user && <Link to="/signup" className="btn btn-primary mt-3">Sign Up Now</Link>}
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            src="https://picsum.photos/id/11/1200/500"
+            className="d-block w-100"
+            alt="Secure"
+            style={{ height: '500px', objectFit: 'cover' }}
+          />
+          <Carousel.Caption className="bg-dark bg-opacity-50 rounded p-3">
+            <h1>Secure & Reliable</h1>
+            <p>Built with security in mind to protect your sensitive information.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            src="https://picsum.photos/id/12/1200/500"
+            className="d-block w-100"
+            alt="Easy"
+            style={{ height: '500px', objectFit: 'cover' }}
+          />
+          <Carousel.Caption className="bg-dark bg-opacity-50 rounded p-3">
+            <h1>Easy to Use</h1>
+            <p>User-friendly interface designed for the best experience.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
 
       {/* About Section */}
       <div className="container my-5">
