@@ -76,13 +76,30 @@ export default function Account() {
 
   const handleSave = async () => {
     if (!selectedFile) return;
+
+    // Replace these with your actual Cloudinary credentials
+    const cloudName = "dahmepwyc"; 
+    const uploadPreset = "website-images";
+
     const formData = new FormData();
-    formData.append("image", selectedFile);
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", uploadPreset);
 
     try {
-      await axios.post(`/user/${user.id}/image`, formData);
+      // 1. Upload image to Cloudinary
+      const response = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData, {
+        headers: {
+          Authorization: null
+        }
+      });
+      const imageUrl = response.data.secure_url;
+      // 2. Send the image URL to your backend (Update user profile)
+      await axios.put(`/user/${user.id}`, { ...user, image: imageUrl });
+
+      // 3. Fetch updated user data and update context to reflect changes in UI
       const result = await axios.get(`/user/${user.id}`);
       login(auth.token, result.data);
+
       handleClose();
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -113,7 +130,7 @@ export default function Account() {
             >
               {user.image ? (
                 <img 
-                  src={`${API_BASE_URL}/user/${user.id}/image?t=${user.image}`} 
+                  src={user.image.startsWith('http') ? user.image : `${API_BASE_URL}/user/${user.id}/image?t=${user.image}`} 
                   alt="Profile" 
                   className="rounded-circle border" 
                   style={{ width: '150px', height: '150px', objectFit: 'cover' }} 
